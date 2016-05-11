@@ -24,7 +24,7 @@
       will-change: transform;
     }
 
-    body.toggled main .box-container .box:nth-child(2n) {
+    .box.gray {
       background: #777 !important;
     }
 
@@ -67,8 +67,20 @@
 
     button.addEventListener('click', function() {
       document.body.classList.toggle('toggled');
-    });
+      //class toggles is toggled on the body
+      //then look for every element on the page with class box
+      //using querySelectorAll
+      // then with iterator i+=2 every second element will be checked
+      // and that is faster then checking every element
 
+      var boxes = container.querySelectorAll('.box');
+      for (var i = 1; i < boxes.length; i += 2) {
+        boxes[i].classList.toggle('gray',
+      document.body.classList.contains('toggled')); // this line checks
+      //if the body contains class toggled. if it has - do it. outcome is ture false.
+    }
+    });
+    // now all iteration is happenign wiht JS
     </script>
   </body>
 
